@@ -88,7 +88,7 @@
 		</String>
 		<String>
 			<name>com.projectlibre1.util.SpecialDateFormat.DATE_FORMAT</name>
-			<value>EEE MM/dd/yy H:mm</value>
+			<value>EEE MM/dd/yy</value>
 		</String>
 		<String>
 			<name>

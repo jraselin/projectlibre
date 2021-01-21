@@ -72,6 +72,9 @@ import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 import javax.swing.table.TableCellRenderer;
 
+import org.apache.commons.lang.ObjectUtils;
+import org.apache.commons.lang.SerializationUtils;
+
 import com.jgoodies.forms.builder.DefaultFormBuilder;
 import com.jgoodies.forms.layout.CellConstraints;
 import com.jgoodies.forms.layout.FormLayout;
@@ -91,8 +94,10 @@ import com.projectlibre1.pm.graphic.views.UsageDetailView;
 import com.projectlibre1.association.AssociationList;
 import com.projectlibre1.configuration.Configuration;
 import com.projectlibre1.field.Field;
+import com.projectlibre1.graphic.configuration.BarFormat;
 import com.projectlibre1.graphic.configuration.BarStyle;
 import com.projectlibre1.graphic.configuration.SpreadSheetCategories;
+import com.projectlibre1.graphic.configuration.TexturedShape;
 import com.projectlibre1.graphic.configuration.shape.Colors;
 import com.projectlibre1.graphic.configuration.shape.PredefinedPaint;
 import com.projectlibre1.graphic.configuration.shape.PredefinedShape;
@@ -131,6 +136,15 @@ public class TaskInformationDialog extends InformationDialog {
 		if (object != null)
 			title += " - " + ((HasId)object).getId();
 		this.setTitle(title);
+		
+		
+		// JRA
+		Task task = (Task)getObject();
+		// WBS
+		if(buttonChooseColor !=null && task != null) {
+			buttonChooseColor.setEnabled(!task.isSummary());
+		}
+		
 	}
 	public JComponent createContentPanel() {	
 	    	
@@ -211,41 +225,66 @@ public class TaskInformationDialog extends InformationDialog {
 		// JRA
 		builder.nextLine(2);
 		builder.add(createSelectColor());
+		builder.nextLine(2);
 		return builder.getPanel();
 	}
 	
+	JButton buttonChooseColor;
 	
 	protected JComponent createSelectColor() {
 		// Repeat of fields from general tab 
 		FormLayout layout = new FormLayout(
-		        "p,3dlu,300dlu" //$NON-NLS-1$
+		        "p,3dlu,50dlu" //$NON-NLS-1$
 				,"p,3dlu"); //$NON-NLS-1$
 		DefaultFormBuilder builder = new DefaultFormBuilder(layout);
 		
-		JButton button = new JButton("Choose color");
-		button.addActionListener(new ActionListener() {
+		 buttonChooseColor = new JButton("Choose color");
+		buttonChooseColor.addActionListener(new ActionListener() {
 		    public void actionPerformed(ActionEvent arg0) {
-		    	Color newColor = JColorChooser.showDialog(null, "Choose a color", Color.RED);
-		    	Gantt gantt = GanttView.gantt;
-		    	if(gantt != null) {
-		    		BarStyle row;
-		    		for (Object object : gantt.getBarStyles().getRows()) {
-						row = (BarStyle) object;
-						if("Bar.task".equalsIgnoreCase(row.getBarFormat().getId())){
-							
-							row.getBarFormat().getMiddle().setColor(newColor);
-							row.getBarFormat().getMiddle().setPaint(new PredefinedPaint(PredefinedPaint.find("SOLID"), newColor, Colors.findColor("WHITE")));
-							
-						}
-					}
-		    	}
 		    	
+		    	Color newColor = JColorChooser.showDialog(null, "Choose a color", Color.WHITE);
+		    	if(newColor != null) {
+			    	Gantt gantt = GanttView.gantt;
+			    	Task task = (Task)getObject();
+			    	BarFormat barFormat = task.getBarFormat();
+			    	if(barFormat == null) {
+			    		
+				    	if(gantt != null) {
+				    		BarStyle row;
+				    		// barstyles global
+				    		for (Object object : gantt.getBarStyles().getRows()) {
+								row = (BarStyle) object;
+								if("Bar.task".equalsIgnoreCase(row.getBarFormat().getId())){
+									barFormat = new BarFormat();
+									barFormat.setRow(row.getBarFormat().getRow());
+									barFormat.setMain(row.getBarFormat().isMain());
+									TexturedShape shape = new TexturedShape();
+									TexturedShape middle = row.getBarFormat().getMiddle();
+									shape.setPaintName(middle.getPaintName());
+									shape.setShapeName(middle.getShapeName());
+									shape.setStrokeName(middle.getStrokeName());
+									barFormat.setMiddle(shape, newColor);
+									barFormat.setFrom(row.getBarFormat().getFrom());
+									barFormat.setTo(row.getBarFormat().getTo());
+									barFormat.setFieldId("Field.name");
+									task.setBarFormat(barFormat);
+								}
+							}
+				    	}
+			    	
+		    	}
+		    	barFormat.getMiddle().setColor(newColor);
+		    	barFormat.getMiddle().setPaint(new PredefinedPaint(PredefinedPaint.find("SOLID"), newColor, Colors.findColor("WHITE")));
+		    	
+		    	
+		    	gantt.updateUI();
+		    	}
 		    	
 		    }
 		});
-		button.setBounds(10, 11, 10, 23);
+		buttonChooseColor.setBounds(10, 11, 10, 23);
 		
-		builder.append("Couleur :",button);
+		builder.append("Couleur :",buttonChooseColor);
 		builder.nextLine(); // border at bottom
 		return builder.getPanel();
 	}

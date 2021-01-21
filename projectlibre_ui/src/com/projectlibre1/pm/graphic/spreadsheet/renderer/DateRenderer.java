@@ -58,6 +58,7 @@ package com.projectlibre1.pm.graphic.spreadsheet.renderer;
 import java.awt.Component;
 import java.util.Date;
 
+import javax.swing.JLabel;
 import javax.swing.JTable;
 
 import com.projectlibre1.options.EditOption;
@@ -72,7 +73,9 @@ public class DateRenderer extends SimpleRenderer {
         if ((value != null) && (value instanceof Date)) 
         	value = EditOption.getInstance().getDateFormat().format((Date) value); 
         Component retorno = super.getTableCellRendererComponent(table, value, isSelected, isEnabled, row, col);
-        return retorno;
+        JLabel component = (JLabel) retorno;
+        component.setHorizontalAlignment(CENTER);
+        return component;
     }
 
 }

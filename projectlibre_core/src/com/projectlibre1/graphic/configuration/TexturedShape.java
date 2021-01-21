@@ -62,13 +62,19 @@ import java.awt.Shape;
 import java.awt.Stroke;
 import java.awt.geom.AffineTransform;
 import java.awt.geom.GeneralPath;
+import java.io.Serializable;
 
 import com.projectlibre1.graphic.configuration.shape.Colors;
 import com.projectlibre1.graphic.configuration.shape.PredefinedPaint;
 import com.projectlibre1.graphic.configuration.shape.PredefinedShape;
 import com.projectlibre1.graphic.configuration.shape.PredefinedStroke;
 
-public class TexturedShape {
+public class TexturedShape implements Serializable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1826683181086991831L;
+
 	PredefinedShape shape = null;
 
 	Color color = null;
@@ -92,11 +98,34 @@ public class TexturedShape {
 	public TexturedShape() {
 	}
 
+	
+	public String getColorName() {
+		return colorName;
+	}
+	public String getStrokeName() {
+		return strokeName;
+	}
+	public String getShapeName() {
+		return shapeName;
+	}
+	
+	public String getPaintName() {
+		return paintName;
+	}
+	
 	void build() {
 		shape = PredefinedShape.find(shapeName);
 		color = Colors.findColor(colorName);
 		stroke = PredefinedStroke.find(strokeName);
 		paint = new PredefinedPaint(PredefinedPaint.find(paintName), color, Colors.findColor("WHITE"));
+	}
+	
+	public void build(Color color) {
+		shape = PredefinedShape.find(shapeName);
+		this.color = color;
+		stroke = PredefinedStroke.find(strokeName);
+		paint = new PredefinedPaint(PredefinedPaint.find(paintName), color, Colors.findColor("WHITE"));
+		
 	}
 
 	public void setShapeName(String shapeName) {
@@ -239,5 +268,8 @@ public class TexturedShape {
 		}
 
 	}
+
+
+	
 
 }

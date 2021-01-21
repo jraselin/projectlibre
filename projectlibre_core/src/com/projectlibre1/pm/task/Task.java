@@ -55,6 +55,7 @@
  *******************************************************************************/
 package com.projectlibre1.pm.task;
 
+import java.awt.Color;
 import java.util.Collection;
 import java.util.Date;
 import java.util.HashSet;
@@ -87,6 +88,7 @@ import com.projectlibre1.field.FieldContext;
 import com.projectlibre1.field.FieldParseException;
 import com.projectlibre1.functor.CollectionVisitor;
 import com.projectlibre1.functor.ObjectVisitor;
+import com.projectlibre1.graphic.configuration.BarFormat;
 import com.projectlibre1.graphic.configuration.GraphicConfiguration;
 import com.projectlibre1.grouping.core.Node;
 import com.projectlibre1.grouping.core.NodeList;
@@ -181,7 +183,9 @@ public abstract class Task implements HasKey, HasNotes, HasCalendar, HasDependen
 	protected transient boolean dirty;
 	protected transient long lastSavedParentId = -1L;
 	protected transient long lastSavedPosistion = 0L;
-
+	
+	// JRA
+	protected transient BarFormat barFormat;
 
 	public static Field getStartField() {
 		if (startFieldInstance == null)
@@ -2142,8 +2146,16 @@ public abstract class Task implements HasKey, HasNotes, HasCalendar, HasDependen
 			result += ", " + pos[1];
 		return result;
 	}
-
-
+ 
+	public BarFormat getBarFormat() {
+		return barFormat;
+	}
+	
+	public void setBarFormat(BarFormat barFormat) {
+		this.barFormat = barFormat;
+		
+	}
+	
 
 
 }

@@ -57,12 +57,17 @@ package com.projectlibre1.graphic.configuration.shape;
 
 import java.awt.BasicStroke;
 import java.awt.Stroke;
+import java.io.Serializable;
 import java.util.HashMap;
 
 /**
  *
  */
-public class PredefinedStroke {
+public class PredefinedStroke implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 7113512564495794148L;
 	public static final BasicStroke DASHED = new BasicStroke (1, BasicStroke.CAP_BUTT, 
             BasicStroke.JOIN_ROUND, 0, new float[]{2,1}, 0);	
 	public static final BasicStroke SPARSE_DASHED = new BasicStroke (1, BasicStroke.CAP_BUTT, 

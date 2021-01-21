@@ -58,6 +58,8 @@ package com.projectlibre1.options;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 
+import org.apache.commons.lang.StringUtils;
+
 import com.projectlibre1.util.DateTime;
 
 /**
@@ -72,6 +74,10 @@ public class EditOption {
 	}
 	private SimpleDateFormat dateFormat = null;
 	private DateFormat shortDateFormat = null;
+	private  SimpleDateFormat customFormat = null;
+	
+	private boolean isShort;
+	private String customDateFormatPattern;
 	
 
 	/**
@@ -114,8 +120,12 @@ public class EditOption {
 	/**
 	 * @return Returns the dateFormat.
 	 */
-	public final SimpleDateFormat getDateFormat() {
-		return dateFormat;
+	public final DateFormat getDateFormat() {
+		if(StringUtils.isNotBlank(customDateFormatPattern)) {
+			return customFormat;
+		}
+		
+		return shortDateFormat;
 	}
 	/**
 	 * @param dateFormat The dateFormat to set.
@@ -128,5 +138,19 @@ public class EditOption {
 	}
 	public void setShortDateFormat(DateFormat shortDateFormat) {
 		this.shortDateFormat = shortDateFormat;
+	}
+	public boolean isShort() {
+		return isShort;
+	}
+	public void setShort(boolean isShort) {
+		this.isShort = isShort;
+	}
+	public String getCustomDateFormatPattern() {
+		return customDateFormatPattern;
+	}
+	public  void setCustomDateFormatPattern(String customDateFormatPattern) {
+		this.customDateFormatPattern = customDateFormatPattern;
+		customFormat = new SimpleDateFormat(customDateFormatPattern);
+		
 	}
 }

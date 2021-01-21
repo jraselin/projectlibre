@@ -123,6 +123,7 @@ import javax.swing.text.StyleContext;
 import javax.swing.text.rtf.RTFEditorKit;
 
 import org.apache.commons.lang.StringEscapeUtils;
+import org.apache.commons.lang.StringUtils;
 
 import com.jgoodies.forms.builder.DefaultFormBuilder;
 import com.jgoodies.forms.layout.CellConstraints;
@@ -131,6 +132,7 @@ import com.projectlibre.ui.ribbon.ProjectLibreRibbonUI;
 import com.projectlibre1.pm.graphic.frames.GraphicManager;
 import com.projectlibre1.configuration.Settings;
 import com.projectlibre1.menu.MenuManager;
+import com.projectlibre1.options.EditOption;
 import com.projectlibre1.pm.snapshot.SnapshottableImpl;
 import com.projectlibre1.preference.ConfigurationFile;
 import com.projectlibre1.strings.Messages;
@@ -899,7 +901,7 @@ public final class LocaleDialog extends AbstractDialog {
 		JComponent directoryPanel=dbuilder.getPanel();
 
 		FormLayout layout = new FormLayout("default, 3dlu, default, 3dlu, default, 3dlu, fill:80dlu:grow", 
-				"p, 3dlu, p, 3dlu, p, 3dlu, p, 3dlu, p, 3dlu, p, 3dlu, 100dlu, 20dlu, p"); 
+				"p, 3dlu, p, 10dlu, p,10dlu ,p, 3dlu, p, 3dlu, p, 3dlu, p, 3dlu, 100dlu, 20dlu, p"); 
 
 		DefaultFormBuilder builder = new DefaultFormBuilder(layout);
 		builder.setDefaultDialogBorder();
@@ -909,6 +911,14 @@ public final class LocaleDialog extends AbstractDialog {
 		builder.nextLine(2);
 		builder.append(Messages.getString("Text.Country"));
 		builder.append(countryCombo);
+		// JRA
+		builder.nextLine(2);
+		customDatePattern = new JTextField(30);
+		customDatePattern.setText(EditOption.getInstance().getCustomDateFormatPattern());
+				builder.append("Custom Date Pattern :");
+				builder.append(customDatePattern);
+		
+		//builder.addSeparator("Custom Date pattern"); 
 		builder.nextLine(2);
 		builder.addSeparator(Messages.getString("Text.ExternalLocale")); 
 		builder.nextLine(2);
@@ -930,4 +940,15 @@ public final class LocaleDialog extends AbstractDialog {
 				.getRow(), 7)); 
 		return builder.getPanel();
 	}
+	
+	JTextField customDatePattern;
+	
+	public void onOk() {
+		if(StringUtils.isNotBlank(customDatePattern.getText())) {
+			EditOption.getInstance().setCustomDateFormatPattern(customDatePattern.getText());
+		}
+
+		super.onOk();
+	}
+	
 }

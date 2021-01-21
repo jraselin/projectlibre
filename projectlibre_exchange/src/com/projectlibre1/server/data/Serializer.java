@@ -75,6 +75,7 @@ import java.util.TreeSet;
 
 import org.apache.commons.collections.Closure;
 import org.apache.commons.collections.CollectionUtils;
+import org.apache.commons.lang.StringUtils;
 
 import com.projectlibre1.server.data.linker.Linker;
 import com.projectlibre1.server.data.linker.ResourceLinker;
@@ -88,6 +89,8 @@ import com.projectlibre1.configuration.Configuration;
 import com.projectlibre1.configuration.FieldDictionary;
 import com.projectlibre1.configuration.Settings;
 import com.projectlibre1.field.FieldValues;
+import com.projectlibre1.graphic.configuration.BarFormat;
+import com.projectlibre1.graphic.configuration.TexturedShape;
 import com.projectlibre1.grouping.core.Node;
 import com.projectlibre1.grouping.core.NodeFactory;
 import com.projectlibre1.grouping.core.VoidNodeImpl;
@@ -247,6 +250,21 @@ public class Serializer {
 	        	taskData.setSubprojectId(((SubProj)task).getSubprojectUniqueId());
 	        }
 
+			
+	        // JRA set custom preferences
+			BarFormat barFormat = task.getBarFormat();
+	        if(barFormat != null) {
+	        	taskData.setColor(barFormat.getMiddle().getColor());
+	        	taskData.setShapeName(barFormat.getMiddle().getShapeName());
+	        	taskData.setStrokeName(barFormat.getMiddle().getStrokeName());
+	        	taskData.setPaintName(barFormat.getMiddle().getPaintName());
+	        	taskData.setMain(barFormat.isMain());
+	        	taskData.setRow(barFormat.getRow());
+	        	taskData.setFrom(barFormat.getFrom());
+	        	taskData.setTo(barFormat.getTo());
+	        	taskData.setFieldId(barFormat.getFieldId());
+	        }
+	        
 
             //assignments
             final Collection assignments=(flatAssignments==null)?new ArrayList():flatAssignments;
@@ -967,6 +985,25 @@ public class Serializer {
     			task.setProject(project);
     			project.initializeId(task);
     			project.add(task);
+    			
+    			// JRA
+    			if(taskData.getColor() != null) {
+    				
+    				BarFormat barFormat = new BarFormat();
+					barFormat.setRow(taskData.getRow());
+					barFormat.setMain(taskData.isMain());
+					TexturedShape middle = new TexturedShape();
+					middle.setPaintName(taskData.getPaintName());
+					middle.setShapeName(taskData.getShapeName());
+					middle.setStrokeName(taskData.getStrokeName());
+					barFormat.setMiddle(middle,taskData.getColor());
+					barFormat.setFrom(taskData.getFrom());
+					barFormat.setTo(taskData.getTo());
+					barFormat.setFieldId(taskData.getFieldId());
+					// set custom bar format
+					task.setBarFormat(barFormat);
+    			}
+    			
     			if (taskData.isExternal()) {
     				task.setExternal(true);
     				task.setProjectId(taskData.getProjectId());

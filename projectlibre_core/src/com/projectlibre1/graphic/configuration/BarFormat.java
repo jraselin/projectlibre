@@ -55,6 +55,9 @@
  *******************************************************************************/
 package com.projectlibre1.graphic.configuration;
 
+import java.awt.Color;
+import java.io.Serializable;
+
 import org.apache.commons.digester.Digester;
 
 import com.projectlibre1.configuration.Configuration;
@@ -67,7 +70,11 @@ import com.projectlibre1.strings.Messages;
 /**
  *
  */
-public class BarFormat implements NamedItem {
+public class BarFormat implements NamedItem, Serializable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 5622075758083562963L;
 	public static final String category="BarFormatCategory";
 
 	public BarFormat() {}
@@ -138,6 +145,11 @@ public class BarFormat implements NamedItem {
 	 */
 	public void setMiddle(TexturedShape middle) {
 		middle.build();
+		this.middle = middle;
+	}
+	
+	public void setMiddle(TexturedShape middle, Color color) {
+		middle.build(color);
 		this.middle = middle;
 	}
 	/**

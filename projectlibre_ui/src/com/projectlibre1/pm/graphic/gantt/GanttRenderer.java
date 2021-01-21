@@ -94,6 +94,7 @@ import com.projectlibre1.field.FieldConverter;
 import com.projectlibre1.functor.IntervalConsumer;
 import com.projectlibre1.functor.ScheduleIntervalGenerator;
 import com.projectlibre1.graphic.configuration.BarFormat;
+import com.projectlibre1.graphic.configuration.BarStyle;
 import com.projectlibre1.graphic.configuration.BarStyles;
 import com.projectlibre1.graphic.configuration.GraphicConfiguration;
 import com.projectlibre1.graphic.configuration.TexturedShape;
@@ -105,6 +106,7 @@ import com.projectlibre1.pm.dependency.Dependency;
 import com.projectlibre1.pm.dependency.DependencyType;
 import com.projectlibre1.pm.scheduling.ScheduleInterval;
 import com.projectlibre1.pm.task.Project;
+import com.projectlibre1.pm.task.Task;
 import com.projectlibre1.timescale.CalendarUtil;
 import com.projectlibre1.timescale.TimeInterval;
 import com.projectlibre1.timescale.TimeIterator;
@@ -515,10 +517,27 @@ public class GanttRenderer extends GraphRenderer implements Serializable {
 	public void paintAnnotation(Graphics2D g2,GraphicNode node){
 		BarStyles barStyles = graphInfo.getBarStyles();
 		annotationRenderer.initialize(g2,node);
-		barStyles.apply(node.getNode().getImpl(),annotationRenderer,false,true,false, false);
+			Task task = (Task)node.getNode().getImpl();
+			// WBS
+			if(task.isSummary()) {
+				BarStyle row;
+				for (Object object : barStyles.getRows()) {
+					row = (BarStyle) object;
+					if(row.isAnnotation() && "Annotation.normal".equalsIgnoreCase(row.getBarFormat().getId())) {
+						annotationRenderer.execute(row.getBarFormat());
+					}
+				}
+				
+			} else {
+				barStyles.apply(node.getNode().getImpl(),annotationRenderer,false,true,false, false);
+				
+			}
+			
+			
 	}
 
 	public void paintHorizontalLine(Graphics2D g2,GraphicNode node){
+
 		BarStyles barStyles = graphInfo.getBarStyles();
 		horizontalLineRenderer.initialize(g2,node);
 		barStyles.apply(node.getNode().getImpl(),horizontalLineRenderer,false,false,false, true);

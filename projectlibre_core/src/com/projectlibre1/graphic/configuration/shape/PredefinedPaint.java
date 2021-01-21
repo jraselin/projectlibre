@@ -60,12 +60,17 @@ import java.awt.Graphics2D;
 import java.awt.Rectangle;
 import java.awt.TexturePaint;
 import java.awt.image.BufferedImage;
+import java.io.Serializable;
 import java.util.HashMap;
 
 /**
  *
  */
-public class PredefinedPaint extends TexturePaint {
+public class PredefinedPaint extends TexturePaint implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 7367238312022608873L;
 	private Color foreground;
 	private Color background;
 	private int width;

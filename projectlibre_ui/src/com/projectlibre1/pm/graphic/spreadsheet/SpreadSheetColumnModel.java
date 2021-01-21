@@ -178,7 +178,10 @@ public class SpreadSheetColumnModel extends DefaultTableColumnModel {
 				} else if (field.isPercent()) {
 					tc.setCellRenderer(new SpreadSheetCellRendererAdapter(new PercentRenderer()));
 				} else if (field.isDate()) {
-					tc.setCellRenderer(new SpreadSheetCellRendererAdapter(new DateRenderer()));
+					// JRA
+					SpreadSheetCellRendererAdapter spreadSheetCellRendererAdapter = new SpreadSheetCellRendererAdapter(new DateRenderer());
+					tc.setCellRenderer(spreadSheetCellRendererAdapter);
+					
 				} else if (field.isBoolean()){
 					tc.setCellRenderer(new SpreadSheetCellRendererAdapter(new OfflineCapableBooleanRenderer()));
 				} else {

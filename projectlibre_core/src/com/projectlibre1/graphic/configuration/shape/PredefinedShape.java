@@ -56,6 +56,7 @@
 package com.projectlibre1.graphic.configuration.shape;
 
 import java.awt.geom.GeneralPath;
+import java.io.Serializable;
 import java.util.HashMap;
 
 import com.projectlibre1.util.ArrayUtils;
@@ -63,7 +64,12 @@ import com.projectlibre1.util.ArrayUtils;
 /**
  * 
  */
-public class PredefinedShape {
+public class PredefinedShape implements Serializable{
+	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -1267772082733275553L;
 	private String name;
 	private double[][] points = null;
 	private double[][][] pointGrid = null; 

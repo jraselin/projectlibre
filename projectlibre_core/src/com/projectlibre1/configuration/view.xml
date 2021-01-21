@@ -60,15 +60,15 @@
 			<middle shapeName="FULL_HEIGHT" colorName="BLUE" paintName="DIAGONAL" strokeName="SOLID"/>
 		</format>
 		<format id="Bar.task" row="1" layer="1" intervalGenerator="com.projectlibre1.pm.graphic.gantt.GanttBarIntervalGenerator" from="Field.start" to="Field.finish">
-			<middle shapeName="FULL_HEIGHT" colorName="ORANGE" paintName="SOLID" strokeName="FRAMED"/>
+			<middle shapeName="FULL_HEIGHT" colorName="NAVY_BLUE" paintName="SOLID" strokeName="FRAMED"/>
 		</format>
 		<format id="Bar.milestone" row="1" layer="1" intervalGenerator="com.projectlibre1.pm.graphic.gantt.GanttBarIntervalGenerator"  from="Field.finish" to="Field.finish">
 			<start shapeName="DIAMOND" colorName="BLACK" paintName="SOLID"/>
 		</format>
 		<format id="Bar.summary" row="1" layer="1" intervalGenerator="com.projectlibre1.pm.graphic.gantt.GanttBarIntervalGenerator"  from="Field.start" to="Field.finish">
-			<start shapeName="PENTAGON_DOWN" colorName="BLACK" paintName="SOLID" />
-			<middle shapeName="HALF_HEIGHT_TOP" colorName="BLACK" paintName="SOLID"/>
-			<end shapeName="PENTAGON_DOWN" colorName="BLACK" paintName="SOLID"/>
+			<start shapeName="PENTAGON_DOWN" colorName="WBS_COLOR" paintName="SOLID" />
+			<middle shapeName="HALF_HEIGHT_TOP" colorName="WBS_COLOR" paintName="SOLID"/>
+			<end shapeName="PENTAGON_DOWN" colorName="WBS_COLOR" paintName="SOLID"/>
 		</format>
 		<format id="Bar.critical" row="1" layer="1" intervalGenerator="com.projectlibre1.pm.graphic.gantt.GanttBarIntervalGenerator"  from="Field.start" to="Field.finish">
 			<middle shapeName="FULL_HEIGHT" colorName="RED" paintName="DEFAULT" strokeName="FRAMED"/>

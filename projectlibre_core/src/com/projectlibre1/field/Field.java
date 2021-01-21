@@ -55,6 +55,7 @@
  *******************************************************************************/
 package com.projectlibre1.field;
 
+import java.io.Serializable;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.text.Format;
@@ -114,6 +115,8 @@ import com.projectlibre1.util.ClassUtils;
  *
  */
 public class Field implements SummaryNames, Cloneable, Comparable, Finder, Comparator {
+	
+	
 	static Log log = LogFactory.getLog(FieldDictionary.class);
 	private static final String EMPTY_STRING = "";
 	private static final String PASSWORD_MASK = "********";

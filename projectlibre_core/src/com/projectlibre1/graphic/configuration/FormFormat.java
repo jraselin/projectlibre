@@ -55,6 +55,7 @@
  *******************************************************************************/
 package com.projectlibre1.graphic.configuration;
 
+import java.io.Serializable;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
@@ -65,7 +66,12 @@ import org.apache.commons.digester.Digester;
 /**
  * 
  */
-public class FormFormat{
+public class FormFormat implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 900116164316792975L;
+	
 	List boxes=null;
 	List layouts=null;
 	

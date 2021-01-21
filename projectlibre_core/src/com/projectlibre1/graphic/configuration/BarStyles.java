@@ -63,6 +63,7 @@ import org.apache.commons.collections.Closure;
 import org.apache.commons.digester.Digester;
 
 import com.projectlibre1.configuration.NamedItem;
+import com.projectlibre1.pm.task.Task;
 import com.projectlibre1.strings.Messages;
 
 /**
@@ -95,8 +96,15 @@ public class BarStyles implements NamedItem {
 		BarStyle row;
 		while (i.hasNext()) {
 			row = (BarStyle)i.next();
-			if (row.isLink()==link && row.isHorizontalGrid() == horizontalGrid &&row.isAnnotation()==annotation&&row.isCalendar()==calendar&&row.evaluate(ganttable)) { // see if meets filter
-				action.execute(row.getBarFormat());
+			if (row.isLink()==link && row.isHorizontalGrid() == horizontalGrid &&row.isAnnotation()==annotation&&row.isCalendar()==calendar
+					&& row.evaluate(ganttable)  
+					) { // see if meets filter
+				
+				if(ganttable != null && ganttable instanceof Task && ((Task)(ganttable)).getBarFormat() != null) {
+					action.execute(((Task)(ganttable)).getBarFormat());
+				} else {
+					action.execute(row.getBarFormat());
+				}
 			}
 		}
 	}

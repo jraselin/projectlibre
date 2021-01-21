@@ -59,6 +59,8 @@ package com.projectlibre1.graphic.configuration.shape;
 import java.awt.Color;
 import java.util.HashMap;
 
+import org.apache.commons.lang.StringUtils;
+
 
 /**
  * These are standard colors that are found all over the internet
@@ -204,6 +206,7 @@ public class Colors {
 	public static final Color MULTIPROJET0 = new Color(0xdcecec);
 	public static final Color VERY_LIGHT_GRAY = new Color(0xEAEAEA);
 	public static final Color NOT_TOO_DARK_GRAY=new Color(120,120,120);
+	public static final Color WBS_COLOR=new Color(80,80,80);
 
   private static Object[][] data = {
 	  {"ALICE_BLUE",ALICE_BLUE},
@@ -341,7 +344,9 @@ public class Colors {
 	  {"NORMAL_LIGHT_YELLOW",NORMAL_LIGHT_YELLOW},
 	  {"MULTIPROJET1",MULTIPROJET1},
 	  {"MULTIPROJET0",MULTIPROJET0},
-	  {"VERY_LIGHT_GRAY",VERY_LIGHT_GRAY}
+	  {"VERY_LIGHT_GRAY",VERY_LIGHT_GRAY},
+	  {"WBS_COLOR",WBS_COLOR},
+	  
  };
 
 	private static HashMap colorMap = null;
@@ -358,6 +363,9 @@ public class Colors {
 	}
 
 	public static Color findColor(String key) {
+		if(StringUtils.isBlank(key)) {
+			return null;
+		}
 		Color found = (Color) getColors().get(key);
 		if (found == null) // if not a standard color, then assume that it needs to be parsed by color
 			found = Color.getColor(key);

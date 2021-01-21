@@ -55,6 +55,7 @@
  *******************************************************************************/
 package com.projectlibre1.server.data;
 
+import java.awt.Color;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Map;
@@ -83,6 +84,57 @@ public class TaskData extends SerializedDataObject {
     protected boolean timesheetCreated = false;
     protected String notes;
     protected transient Map attributes;
+    // JRA
+	private String paintName;
+	private String shapeName;
+	private String strokeName;
+	private int row;
+	private boolean main;
+	private String from;
+	private String to;
+	private Color color;
+	private String fieldId;
+	
+	public String getPaintName() {
+		return paintName;
+	}
+
+	public void setPaintName(String paintName) {
+		this.paintName = paintName;
+	}
+
+	public String getShapeName() {
+		return shapeName;
+	}
+
+	public void setShapeName(String shapeName) {
+		this.shapeName = shapeName;
+	}
+
+	public String getStrokeName() {
+		return strokeName;
+	}
+
+	public void setStrokeName(String strokeName) {
+		this.strokeName = strokeName;
+	}
+
+	public int getRow() {
+		return row;
+	}
+
+	public void setRow(int row) {
+		this.row = row;
+	}
+
+	public boolean isMain() {
+		return main;
+	}
+
+	public void setMain(boolean main) {
+		this.main = main;
+	}
+
 
 // this code is to set fields which are exposed in database
 //    protected long start;
@@ -236,6 +288,38 @@ public class TaskData extends SerializedDataObject {
 	}
 	public void setAttributes(Map attributes) {
 		this.attributes = attributes;
+	}
+
+	public String getFrom() {
+		return from;
+	}
+
+	public void setFrom(String from) {
+		this.from = from;
+	}
+
+	public String getTo() {
+		return to;
+	}
+
+	public void setTo(String to) {
+		this.to = to;
+	}
+
+	public Color getColor() {
+		return color;
+	}
+
+	public void setColor(Color color) {
+		this.color = color;
+	}
+
+	public String getFieldId() {
+		return fieldId;
+	}
+
+	public void setFieldId(String fieldId) {
+		this.fieldId = fieldId;
 	}
 
 // this code is to set fields which are exposed in database
