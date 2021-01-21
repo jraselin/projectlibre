@@ -100,7 +100,10 @@ public class BarStyles implements NamedItem {
 					&& row.evaluate(ganttable)  
 					) { // see if meets filter
 				
-				if(ganttable != null && ganttable instanceof Task && ((Task)(ganttable)).getBarFormat() != null) {
+				if(ganttable != null 
+						&& ganttable instanceof Task
+						&& ((Task)(ganttable)).getBarFormat() != null
+						&& !((Task)(ganttable)).isCritical()) {
 					action.execute(((Task)(ganttable)).getBarFormat());
 				} else {
 					action.execute(row.getBarFormat());

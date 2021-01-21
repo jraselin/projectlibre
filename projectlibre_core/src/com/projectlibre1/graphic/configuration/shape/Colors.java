@@ -207,6 +207,7 @@ public class Colors {
 	public static final Color VERY_LIGHT_GRAY = new Color(0xEAEAEA);
 	public static final Color NOT_TOO_DARK_GRAY=new Color(120,120,120);
 	public static final Color WBS_COLOR=new Color(80,80,80);
+	public static final Color TASK_DEFAULT_COLOR=new Color(0,204,204);
 
   private static Object[][] data = {
 	  {"ALICE_BLUE",ALICE_BLUE},
@@ -346,6 +347,7 @@ public class Colors {
 	  {"MULTIPROJET0",MULTIPROJET0},
 	  {"VERY_LIGHT_GRAY",VERY_LIGHT_GRAY},
 	  {"WBS_COLOR",WBS_COLOR},
+	  {"TASK_DEFAULT_COLOR",TASK_DEFAULT_COLOR},
 	  
  };
 
