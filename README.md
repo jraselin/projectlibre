@@ -6,6 +6,7 @@ This specific version enhance ProjectLibre with the features below :
 2. Show WBS name in the Gantt View
 3. Custom date pattern available in LocaleConfig Dialog
 4. Dates are center aligned
+5. Save current gantt zoom in projectfile
 
 Windows EXE is available in the folder *projectlibre/binaries/ProjectLibre-JRA-v1.0/*
 
