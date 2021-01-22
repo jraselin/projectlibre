@@ -7,6 +7,8 @@ This specific version enhance ProjectLibre with the features below :
 3. Custom date pattern available in LocaleConfig Dialog
 4. Dates are center aligned
 
+Windows EXE is available in the folder *projectlibre/binaries/ProjectLibre-JRA-v1.0/*
+
 ![alt text](https://github.com/jraselin/projectlibre/blob/master/CaptureProjectLibreJRA.PNG?raw=true)
 
 Custom color are available for each task
