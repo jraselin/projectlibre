@@ -1,4 +1,4 @@
-# Projectlibre with task bar color, wbs label and custom date pattern
+# Projectlibre 1.9.3 with task bar color, wbs label and custom date pattern
 
 This specific version enhance ProjectLibre with the features below : 
 
