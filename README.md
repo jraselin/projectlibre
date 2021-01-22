@@ -8,3 +8,7 @@ This specific version enhance ProjectLibre with the features below :
 4. Dates are center aligned
 
 ![alt text](https://github.com/jraselin/projectlibre/blob/master/CaptureProjectLibreJRA.PNG?raw=true)
+
+Custom color are available for each task
+
+![alt text](https://github.com/jraselin/projectlibre/blob/master/CaptureProjectLibreJRA2.PNG?raw=true)
