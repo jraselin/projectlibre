@@ -65,6 +65,7 @@ import com.projectlibre1.pm.graphic.frames.ApplicationStartupFactory;
 import com.projectlibre1.pm.graphic.frames.MainFrameFactory;
 import com.projectlibre1.preference.ConfigurationFile;
 import com.projectlibre1.strings.Messages;
+import com.projectlibre1.timescale.TimeScaleManager;
 import com.projectlibre1.util.Environment;
 
 /**
@@ -113,5 +114,8 @@ public class Main {
 		Frame frame = MainFrameFactory.creareMainFrame(Messages.getContextString("Text.ApplicationTitle"), null, null);
 		boolean doWelcome = true; // to do see if project param exists in args
 		startupFactory.instanceFromNewSession(frame,doWelcome);
+		
+		// JRA
+		TimeScaleManager.createInstance();
 	}
 }

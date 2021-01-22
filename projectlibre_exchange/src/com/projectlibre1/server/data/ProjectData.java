@@ -114,6 +114,11 @@ public class ProjectData extends DocumentData implements HasName,DelegatesFields
     protected long[] unchangedLinks;
     protected boolean incrementalDistributions;
     
+    // JRA
+    protected String customDateFormat;
+    protected int currentScaleIndex = 2;
+    
+    
 	//protected transient long externalId=-1L;
 	protected transient Map attributes;
 
@@ -407,6 +412,18 @@ public class ProjectData extends DocumentData implements HasName,DelegatesFields
 	}
 	public void setAttributes(Map attributes) {
 		this.attributes = attributes;
+	}
+	public String getCustomDateFormat() {
+		return customDateFormat;
+	}
+	public void setCustomDateFormat(String customDateFormat) {
+		this.customDateFormat = customDateFormat;
+	}
+	public int getCurrentScaleIndex() {
+		return currentScaleIndex;
+	}
+	public void setCurrentScaleIndex(int currentScaleIndex) {
+		this.currentScaleIndex = currentScaleIndex;
 	}
 
 

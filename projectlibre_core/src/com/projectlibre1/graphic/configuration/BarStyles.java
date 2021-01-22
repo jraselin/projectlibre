@@ -94,16 +94,18 @@ public class BarStyles implements NamedItem {
 	public void apply(Object ganttable, Closure action,boolean link,boolean annotation,boolean calendar, boolean horizontalGrid) {
 		Iterator i = rows.iterator();
 		BarStyle row;
+		Task task = null;
+		if(ganttable != null 
+				&& ganttable instanceof Task) {
+			task = (Task)ganttable;
+		}
+		boolean isTaskCustomBar = task != null && task.getBarFormat() != null && !task.isCritical() && !annotation;
 		while (i.hasNext()) {
 			row = (BarStyle)i.next();
 			if (row.isLink()==link && row.isHorizontalGrid() == horizontalGrid &&row.isAnnotation()==annotation&&row.isCalendar()==calendar
 					&& row.evaluate(ganttable)  
 					) { // see if meets filter
-				
-				if(ganttable != null 
-						&& ganttable instanceof Task
-						&& ((Task)(ganttable)).getBarFormat() != null
-						&& !((Task)(ganttable)).isCritical()) {
+				if(isTaskCustomBar) {
 					action.execute(((Task)(ganttable)).getBarFormat());
 				} else {
 					action.execute(row.getBarFormat());

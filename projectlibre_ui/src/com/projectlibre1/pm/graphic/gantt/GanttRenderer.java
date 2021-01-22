@@ -510,6 +510,8 @@ public class GanttRenderer extends GraphRenderer implements Serializable {
 		if (background)
 			nodeRenderer.setLayers(BarFormat.MIN_BACKGROUND_LAYER,BarFormat.MAX_BACKGROUND_LAYER);
 		else nodeRenderer.setLayers(BarFormat.MIN_FOREGROUND_LAYER,BarFormat.MAX_FOREGROUND_LAYER);
+		
+		// JRA
 		barStyles.apply(node.getNode().getImpl(),nodeRenderer);
 
 	}

@@ -95,6 +95,7 @@ import com.projectlibre1.grouping.core.Node;
 import com.projectlibre1.grouping.core.NodeFactory;
 import com.projectlibre1.grouping.core.VoidNodeImpl;
 import com.projectlibre1.grouping.core.model.DefaultNodeModel;
+import com.projectlibre1.options.EditOption;
 import com.projectlibre1.pm.assignment.Assignment;
 import com.projectlibre1.pm.calendar.CalendarService;
 import com.projectlibre1.pm.calendar.WorkCalendar;
@@ -119,6 +120,7 @@ import com.projectlibre1.server.access.ErrorLogger;
 import com.projectlibre1.session.Session;
 import com.projectlibre1.session.SessionFactory;
 import com.projectlibre1.strings.Messages;
+import com.projectlibre1.timescale.TimeScaleManager;
 import com.projectlibre1.undo.DataFactoryUndoController;
 import com.projectlibre1.util.Environment;
 
@@ -632,6 +634,11 @@ public class Serializer {
 
         //project.setNewIds(); //claur - useful ?
 
+        
+        // JRA
+        // custom date format in SpreadSheet
+		projectData.setCustomDateFormat(EditOption.getInstance().getCustomDateFormatPattern());
+        projectData.setCurrentScaleIndex(TimeScaleManager.getInstance().getCurrentScaleIndex());
         return projectData;
 
     }
@@ -835,7 +842,14 @@ public class Serializer {
 
     	project.postDeserialization();
 
-
+    	// custom date format in SpreadSheet
+		if(StringUtils.isNotBlank(projectData.getCustomDateFormat())){
+			EditOption.getInstance().setCustomDateFormatPattern(projectData.getCustomDateFormat());
+		}
+		
+		if(TimeScaleManager.getInstance()!= null) {
+			TimeScaleManager.getInstance().setCurrentScaleIndex(projectData.getCurrentScaleIndex());
+		}
     	//resources
     	final Map resourceNodeMap=new HashMap();
     	ResourcePool resourcePool = ResourcePoolFactory.getInstance().createResourcePool(project.getName(),undoController);
@@ -986,7 +1000,7 @@ public class Serializer {
     			project.initializeId(task);
     			project.add(task);
     			
-    			// JRA
+    			// JRA custom task bar color
     			if(taskData.getColor() != null) {
     				
     				BarFormat barFormat = new BarFormat();

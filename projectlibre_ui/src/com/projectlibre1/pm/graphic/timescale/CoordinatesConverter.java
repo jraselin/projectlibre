@@ -89,7 +89,7 @@ public class CoordinatesConverter implements ScheduleEventListener, Serializable
 	
 	
 	public CoordinatesConverter(Project project){
-		this(project,TimeScaleManager.createInstance());
+		this(project,TimeScaleManager.getInstance());
 	}
 	/**
 	 * 

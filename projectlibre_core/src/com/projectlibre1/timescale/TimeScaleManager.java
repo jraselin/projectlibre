@@ -68,6 +68,8 @@ import com.projectlibre1.configuration.Configuration;
  */
 public class TimeScaleManager {
 	
+	private static TimeScaleManager instance; 
+	
 	protected int currentScaleIndex=-1;
 	protected List scales;
 	protected int defaultIndex;
@@ -172,6 +174,7 @@ public class TimeScaleManager {
 		for (Iterator i=ref.scales.iterator();i.hasNext();){
 			tsManager.scales.add(((TimeScale)i.next()).clone());
 		}
+		instance = tsManager;
 		return tsManager;
 	}
 	
@@ -188,6 +191,10 @@ public class TimeScaleManager {
 
 	public final void setCurrentScaleIndex(int currentScaleIndex) {
 		this.currentScaleIndex = currentScaleIndex;
+	}
+
+	public static TimeScaleManager getInstance() {
+		return instance;
 	}
 	
 	

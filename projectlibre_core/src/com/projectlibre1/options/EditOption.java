@@ -74,7 +74,6 @@ public class EditOption {
 	}
 	private SimpleDateFormat dateFormat = null;
 	private DateFormat shortDateFormat = null;
-	private  SimpleDateFormat customFormat = null;
 	
 	private boolean isShort;
 	private String customDateFormatPattern;
@@ -121,11 +120,7 @@ public class EditOption {
 	 * @return Returns the dateFormat.
 	 */
 	public final DateFormat getDateFormat() {
-		if(StringUtils.isNotBlank(customDateFormatPattern)) {
-			return customFormat;
-		}
-		
-		return shortDateFormat;
+		return dateFormat;
 	}
 	/**
 	 * @param dateFormat The dateFormat to set.
@@ -150,7 +145,7 @@ public class EditOption {
 	}
 	public  void setCustomDateFormatPattern(String customDateFormatPattern) {
 		this.customDateFormatPattern = customDateFormatPattern;
-		customFormat = new SimpleDateFormat(customDateFormatPattern);
+		dateFormat = new SimpleDateFormat(customDateFormatPattern);
 		
 	}
 }
