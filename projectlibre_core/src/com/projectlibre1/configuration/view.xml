@@ -87,37 +87,37 @@
 		</format>
 
 		<format id="Bar.baseline" row="2" from="Field.baselineStart" to="Field.baselineFinish">
-			<middle shapeName="FULL_HEIGHT" colorName="DARK_SLATE_GRAY" paintName="DEFAULT" strokeName="SOLID"/>
+			<middle shapeName="FULL_HEIGHT" colorName="DARK_SLATE_GRAY" paintName="DOT_LINE2" strokeName="SOLID"/>
 		</format>
 		<format id="Bar.baseline1" row="3" from="Field.baseline1Start" to="Field.baseline1Finish">
-			<middle shapeName="FULL_HEIGHT" colorName="MAGENTA" paintName="DEFAULT" strokeName="SOLID"/>
+			<middle shapeName="FULL_HEIGHT" colorName="MAGENTA" paintName="DOT_LINE2" strokeName="SOLID"/>
 		</format>
 		<format id="Bar.baseline2" row="4" from="Field.baseline2Start" to="Field.baseline2Finish">
-			<middle shapeName="FULL_HEIGHT" colorName="KHAKI" paintName="DEFAULT" strokeName="SOLID"/>
+			<middle shapeName="FULL_HEIGHT" colorName="KHAKI" paintName="DOT_LINE2" strokeName="SOLID"/>
 		</format>
 		<format id="Bar.baseline3" row="5" from="Field.baseline3Start" to="Field.baseline3Finish">
-			<middle shapeName="FULL_HEIGHT" colorName="TAN" paintName="DEFAULT" strokeName="SOLID"/>
+			<middle shapeName="FULL_HEIGHT" colorName="TAN" paintName="DOT_LINE2" strokeName="SOLID"/>
 		</format>
 		<format id="Bar.baseline4" row="6" from="Field.baseline4Start" to="Field.baseline4Finish">
-			<middle shapeName="FULL_HEIGHT" colorName="NAVY" paintName="DEFAULT" strokeName="SOLID"/>
+			<middle shapeName="FULL_HEIGHT" colorName="NAVY" paintName="DOT_LINE2" strokeName="SOLID"/>
 		</format>
 		<format id="Bar.baseline5" row="7" from="Field.baseline5Start" to="Field.baseline5Finish">
-			<middle shapeName="FULL_HEIGHT" colorName="TURQUOISE" paintName="DEFAULT" strokeName="SOLID"/>
+			<middle shapeName="FULL_HEIGHT" colorName="TURQUOISE" paintName="DOT_LINE2" strokeName="SOLID"/>
 		</format>
 		<format id="Bar.baseline6" row="8" from="Field.baseline6Start" to="Field.baseline6Finish">
-			<middle shapeName="FULL_HEIGHT" colorName="VIOLET" paintName="DEFAULT" strokeName="SOLID"/>
+			<middle shapeName="FULL_HEIGHT" colorName="VIOLET" paintName="DOT_LINE2" strokeName="SOLID"/>
 		</format>
 		<format id="Bar.baseline7" row="9" from="Field.baseline7Start" to="Field.baseline7Finish">
-			<middle shapeName="FULL_HEIGHT" colorName="MAROON" paintName="DEFAULT" strokeName="SOLID"/>
+			<middle shapeName="FULL_HEIGHT" colorName="MAROON" paintName="DOT_LINE2" strokeName="SOLID"/>
 		</format>
 		<format id="Bar.baseline8" row="10" from="Field.baseline8Start" to="Field.baseline8Finish">
-			<middle shapeName="FULL_HEIGHT" colorName="SALMON" paintName="DEFAULT" strokeName="SOLID"/>
+			<middle shapeName="FULL_HEIGHT" colorName="SALMON" paintName="DOT_LINE2" strokeName="SOLID"/>
 		</format>
 		<format id="Bar.baseline9" row="11" from="Field.baseline9Start" to="Field.baseline9Finish">
-			<middle shapeName="FULL_HEIGHT" colorName="ORANGE" paintName="DEFAULT" strokeName="SOLID"/>
+			<middle shapeName="FULL_HEIGHT" colorName="ORANGE" paintName="DOT_LINE2" strokeName="SOLID"/>
 		</format>
 		<format id="Bar.baseline10" row="12" from="Field.baseline10Start" to="Field.baseline10Finish">
-			<middle shapeName="FULL_HEIGHT" colorName="CYAN" paintName="DEFAULT" strokeName="SOLID"/>
+			<middle shapeName="FULL_HEIGHT" colorName="CYAN" paintName="DOT_LINE2" strokeName="SOLID"/>
 		</format>
 		<format id="Pert.task" row="1" layer="1" main="true">
 			<middle shapeName="FULL_HEIGHT" colorName="BLUE" paintName="VERY_SPACED_DOTS" strokeName="LARGE_FRAMED"/>

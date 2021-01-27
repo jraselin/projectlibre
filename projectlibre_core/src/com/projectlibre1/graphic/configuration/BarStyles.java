@@ -105,7 +105,9 @@ public class BarStyles implements NamedItem {
 			if (row.isLink()==link && row.isHorizontalGrid() == horizontalGrid &&row.isAnnotation()==annotation&&row.isCalendar()==calendar
 					&& row.evaluate(ganttable)  
 					) { // see if meets filter
-				if(isTaskCustomBar) {
+				if(isTaskCustomBar 
+						&& "Bar.task".equalsIgnoreCase(row.getFormatId())
+						) {
 					action.execute(((Task)(ganttable)).getBarFormat());
 				} else {
 					action.execute(row.getBarFormat());

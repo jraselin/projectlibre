@@ -124,11 +124,17 @@ public class BarStyle implements Predicate {
 		String name = Messages.getString(formatId);
 		barFormat = (BarFormat) Dictionary.get(BarFormat.category,name);
 	}
+	
+	
 	/**
 	 * @return Returns the formula.
 	 */
 	public String getFormulaText() {
 		return formulaText;
+	}
+	
+	public String getFormatId() {
+		return formatId;
 	}
 	
 	void build() {
